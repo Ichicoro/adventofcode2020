@@ -1,36 +1,25 @@
 import java.io.File
 import kotlin.*
 
-val numArray = File("input.txt").readLines().map { it.toInt() }.toTypedArray()
-
-// Part 1
-fun part1(array: Array<Int>, sumEquals: Int): Int {
-    numArray.forEachIndexed { idx, elem ->
+File("input.txt").readLines().map { it.toInt() }.toTypedArray().let { numArray ->
+    numArray.forEachIndexed part1@{ idx, elem ->
         (idx+1 until numArray.size).forEach { a ->
-            if (elem + numArray[a] == sumEquals) {
+            if (elem + numArray[a] == 2020) {
                 println("$elem * ${numArray[a]} = ${elem * numArray[a]}")
-                return elem * numArray[a]
+                return@part1
             }
         }
     }
-    return -1
-}
 
-// Part 2
-fun part2(array: Array<Int>, sumEquals: Int): Int {
     numArray.forEachIndexed { idx, elem ->
-        (idx+1 until numArray.size).forEach { a ->
+        (idx+1 until numArray.size).forEach part2@{ a ->
             (a+1 until numArray.size).forEach { b ->
-                if (elem + numArray[a] + numArray[b] == sumEquals) {
+                if (elem + numArray[a] + numArray[b] == 2020) {
                     println("$elem + ${numArray[a]} * ${numArray[b]} = ${elem * numArray[a] * numArray[b]}")
-                    return elem * numArray[a] * numArray[b]
+                    return@part2
                 }
             }
         }
     }
-    return -1
 }
-
-println("Part 1 -> ${part1(numArray, 2020)}")
-println("Part 2 -> ${part2(numArray, 2020)}")
 
