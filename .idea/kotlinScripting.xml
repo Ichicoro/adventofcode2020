@@ -5,5 +5,9 @@
       <order>2147483647</order>
       <autoReloadConfigurations>true</autoReloadConfigurations>
     </scriptDefinition>
+    <scriptDefinition className="org.jetbrains.kotlin.mainKts.MainKtsScript" definitionName="MainKtsScript">
+      <order>2147483647</order>
+      <autoReloadConfigurations>true</autoReloadConfigurations>
+    </scriptDefinition>
   </component>
 </project>
