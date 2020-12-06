@@ -3,11 +3,14 @@
 import java.io.File
 import kotlin.*
 
+val start = System.currentTimeMillis()
+
 fun checkNext(map: Array<Array<Boolean>>, xJump: Int = 3, yJump: Int = 1, xPos: Int = 0, yPos: Int = 0): Int {
     return (if (map[yPos][xPos % map[0].size]) 1 else 0) + (if (yPos + yJump < map.size) checkNext(map, xJump, yJump, xPos + xJump, yPos + yJump) else 0)
 }
 
 File("input.txt").readLines().map { line -> line.map { char -> char != '.' }.toTypedArray() }.toTypedArray().let { map ->
+    val time = System.currentTimeMillis()
     println("Part 1: ${checkNext(map)}")
     println("Part 2: ${
         checkNext(map, 1, 1)
@@ -16,4 +19,7 @@ File("input.txt").readLines().map { line -> line.map { char -> char != '.' }.toT
             * checkNext(map, 7, 1)
             * checkNext(map, 1, 2)
     }")
+    println("Inner loop time taken: ${System.currentTimeMillis() - time}")
 }
+
+println("Elapsed: ${System.currentTimeMillis() - start}ms")
