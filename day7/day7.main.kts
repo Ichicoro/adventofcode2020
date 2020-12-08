@@ -38,8 +38,6 @@ File("input.txt").readLines().fold(mapOf<String, Map<String, Int>>()) { acc, lin
             )
         }
 }.let { bagMap ->
-    bagMap.forEach { println(it) }
-    print("\n")
     println("Part 1: ${part1(bagMap)}")
     println("Part 2: ${part2(bagMap)}")
 }
